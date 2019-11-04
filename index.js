@@ -1,7 +1,7 @@
 const Vacuum = require('./Vacuum')
 
-const vacuumA = new Vacuum([1, 2], [0, 1, 'E'])
+const vacuumA = new Vacuum([6, 6], [0, 0, 'E'])
 
-vacuumA.excute(['L', 'L', 'M'])
+vacuumA.excute(['M'])
 
-console.log(vacuumA)
+console.log(vacuumA.getPosition())

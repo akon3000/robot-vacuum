@@ -78,6 +78,60 @@ class Robot {
         break
     }
   }
+
+  move() {
+    const [areaX, areaY] = this.area
+    const [axisX, axisY, directionRobot] = this.position
+    const [E, W, N, S] = this.directions
+
+    if (
+      (axisX === 0 && directionRobot === W) ||
+      (axisX === (areaX - 1) && directionRobot === E) ||
+      (axisY === 0 && directionRobot === S) ||
+      (axisY === (areaY - 1) && directionRobot === N)
+    ) {
+      return
+    }
+
+    switch (directionRobot) {
+      case E:
+        this.position[0] = this.position[0] + 1
+        break
+      case W:
+        this.position[0] = this.position[0] - 1
+        break
+      case N:
+        this.position[1] = this.position[1] + 1
+        break
+      case S:
+        this.position[1] = this.position[1] - 1
+    }
+  }
+
+  excute(commands) {
+    if (
+      !Array.isArray(commands) ||
+      commands.some(cmd => !this.commands.find(command => command === cmd))
+    ) {
+      throw Error('Vacuum excute(): arguments is not support.')
+    }
+
+    const [L, R, M] = this.commands
+
+    commands.forEach(cmd => {
+      switch(cmd) {
+        case L:
+          this.rotateLeft()
+          break
+        case R:
+          this.rotateRight()
+          break
+        case M: 
+          this.move()
+          break
+      }
+    })
+  }
 }
 
 module.exports = Robot
