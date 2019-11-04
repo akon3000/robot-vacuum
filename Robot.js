@@ -38,6 +38,46 @@ class Robot {
 
     this.position = position
   }
+
+  rotateLeft() {
+    const [, , directionRobot] = this.position
+    const [E, W, N, S] = this.directions
+
+    switch (directionRobot) {
+      case E:
+        this.position[2] = N
+        break
+      case W:
+        this.position[2] = S
+        break
+      case N:
+        this.position[2] = W
+        break
+      case S:
+        this.position[2] = E
+        break
+    }
+  }
+
+  rotateRight() {
+    const [, , directionRobot] = this.position
+    const [E, W, N, S] = this.directions
+
+    switch (directionRobot) {
+      case E:
+        this.position[2] = S
+        break
+      case W:
+        this.position[2] = N
+        break
+      case N:
+        this.position[2] = E
+        break
+      case S:
+        this.position[2] = W
+        break
+    }
+  }
 }
 
 module.exports = Robot

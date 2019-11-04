@@ -7,10 +7,6 @@ class Vacuum extends Robot {
     this.setPosition(position)
   }
 
-  rotate(target) {
-    console.log(`rotate ${target}`)
-  }
-
   move() {
     console.log('move')
   }
@@ -28,10 +24,10 @@ class Vacuum extends Robot {
     commands.forEach(cmd => {
       switch(cmd) {
         case L:
-          this.rotate('left')
+          this.rotateLeft()
           break
         case R:
-          this.rotate('right')
+          this.rotateRight()
           break
         case M: 
           this.move()
